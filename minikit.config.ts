@@ -23,7 +23,7 @@ export const minikitConfig = {
     subtitle: "A badge for Baseposters Pros",
     description: "a medal for the best baseposters",
     screenshotUrls: ["https://basepostingbadge.vercel.app/images/scr1.png"],
-    name: "Base Cult Mint",
+    name: "Baseposting badge Mint",
     iconUrl: `https://basepostingbadge.vercel.app/images/icon.png`,
     splashImageUrl: `https://basepostingbadge.vercel.app/images/splash.png`,
     splashBackgroundColor: "#000000",
