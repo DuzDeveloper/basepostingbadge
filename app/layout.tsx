@@ -7,8 +7,8 @@ import { Providers } from '@/components/providers';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Basecult',
-  description: 'Enter to the cult',
+  title: 'Baseposting Badge',
+  description: 'a Badge',
     openGraph: {
     title: minikitConfig.miniapp.ogTitle || minikitConfig.miniapp.name,
     description: minikitConfig.miniapp.ogDescription || minikitConfig.miniapp.description,
