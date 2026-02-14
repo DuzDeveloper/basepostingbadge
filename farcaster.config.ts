@@ -3,8 +3,8 @@ export const ROOT_URL = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
 export const farcasterConfig = {
   "accountAssociation": {
     "header": "eyJmaWQiOjU3NjA2MiwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDRiZEUyNjkxYTRhOTg3OWQ3NjUxMjQwN0FjNmFlOThFZDU5ZTdkQzMifQ",
-    "payload": "eyJkb21haW4iOiJiYXNlY3VsdG1pbnQudmVyY2VsLmFwcCJ9",
-    "signature": "bG3ObjCp76fcDk3Y9xd1G4AIViPyRycAWQU8kV0BxClX56RHgVjO9GnQNJ0M4eWyjNRM/0u2x9rxiQvQANoeCxw=",
+    "payload": "eyJkb21haW4iOiJiYXNlcG9zdGluZ2JhZGdlLnZlcmNlbC5hcHAifQ",
+    "signature": "+gIZ3SZyxVALZqirLEGDryMg80P034WsvACMU7nq6vlQlrwOBJMDmVbDrOF6dQmDAzSlsk/1W+Cu7vAEPV4PYxw="
 },
   frame: {
     version: "1",
