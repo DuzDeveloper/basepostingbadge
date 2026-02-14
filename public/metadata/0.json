@@ -1,7 +1,7 @@
 {
-  "name": "Genesis #0",
-  "description": "The first NFT from the Genesis Collection - A cyberpunk-inspired digital collectible minted on Base blockchain. This NFT represents the beginning of a new era in decentralized art.",
-  "image": "https://basepostingbadge.vercel.app/images/0.png",
+  "name": "Base Cult NFT #0",
+  "description": "Base Cult",
+  "image": "public/images/cult.png",
   "attributes": [
     {
       "trait_type": "Rarity",
