@@ -1,0 +1,28 @@
+{
+  "frame": {
+    "name": "Baseposting Badge",
+    "version": "1",
+    "iconUrl": "https://basepostingbadge.vercel.app/icon.png",
+    "homeUrl": "https://basepostingbadge.vercel.app",
+    "imageUrl": "https://basepostingbadge.vercel.app/images/icon.png",
+    "buttonTitle": "Baseposting Badge NFT",
+    "splashImageUrl": "https://basepostingbadge.vercel.app/images/splash.png",
+    "splashBackgroundColor": "#000000",
+    "webhookUrl": "https://basepostingbadge.vercel.app/api/webhook",
+    "subtitle": "the mint for the real Baseposters",
+    "primaryCategory": "art-creativity",
+    "description": "a medal for the best baseposters",
+    "screenshotUrls": [
+      "https://basepostingbadge.vercel.app/images/scr1.png"
+    ],
+    "heroImageUrl": "https://basepostingbadge.vercel.app/images/heroog.png",
+    "tags": [
+      "art",
+      "nft",
+      "badge"
+    ],
+    "ogTitle": "Baseposting Badge NFT",
+    "ogDescription": "a medal for the best baseposters",
+    "ogImageUrl": "https://basepostingbadge.vercel.app/images/heroog.png"
+  }
+}
