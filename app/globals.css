@@ -2,286 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '@coinbase/onchainkit/styles.css';
+
 :root {
-  /* Cyberpunk Blue Palette */
-  --cyber-blue-dark: #0a0e27;
-  --cyber-blue-deep: #0f172a;
-  --cyber-blue-main: #0ea5e9;
-  --cyber-blue-bright: #38bdf8;
-  --cyber-blue-neon: #06b6d4;
-  --cyber-accent: #3b82f6;
-  --cyber-glow: #60a5fa;
-  --cyber-electric: #0891b2;
-  
-  /* Grid & Effects */
-  --grid-color: rgba(14, 165, 233, 0.1);
-  --glow-color: rgba(56, 189, 248, 0.5);
+  --background: #000000;
+  --foreground: #06b6d4;
+  --accent-cyan: #06b6d4;
+  --accent-magenta: #ec4899;
 }
 
-@layer base {
-  * {
-    @apply border-cyan-500/20;
-  }
-  
-  body {
-    @apply bg-gradient-to-br from-[#0a0e27] via-[#0f172a] to-[#0a0e27];
-    @apply text-cyan-50;
-    @apply relative overflow-x-hidden;
-    min-height: 100vh;
-    font-family: 'Space Mono', 'Courier New', monospace;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-  /* Cyberpunk Grid Background */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(var(--grid-color) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.3;
-  }
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Courier New', Courier, monospace;
+}
 
-  /* Scanline Effect */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.15),
-      rgba(0, 0, 0, 0.15) 1px,
-      transparent 1px,
-      transparent 2px
-    );
-    pointer-events: none;
-    z-index: 9999;
-    animation: scanline 8s linear infinite;
-  }
+body {
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0;
+  animation: grid-move 20s linear infinite;
+}
 
-  @keyframes scanline {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(50px); }
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
   }
 }
 
-@layer components {
-  /* Neon Text Effect */
-  .neon-text {
-    color: var(--cyber-blue-bright);
-    text-shadow: 
-      0 0 10px var(--glow-color),
-      0 0 20px var(--glow-color),
-      0 0 30px var(--cyber-blue-neon),
-      0 0 40px var(--cyber-blue-neon);
-    animation: flicker 3s infinite alternate;
-  }
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-  @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-      text-shadow: 
-        0 0 10px var(--glow-color),
-        0 0 20px var(--glow-color),
-        0 0 30px var(--cyber-blue-neon),
-        0 0 40px var(--cyber-blue-neon);
-    }
-    20%, 24%, 55% {
-      text-shadow: none;
-    }
-  }
+::-webkit-scrollbar-track {
+  background: #000;
+  border-left: 1px solid rgba(6, 182, 212, 0.2);
+}
 
-  /* Cyberpunk Button */
-  .cyber-button {
-    @apply relative px-8 py-4 font-bold text-cyan-50;
-    @apply bg-gradient-to-r from-cyan-500 to-blue-600;
-    @apply border-2 border-cyan-400;
-    @apply transition-all duration-300;
-    @apply uppercase tracking-wider;
-    clip-path: polygon(
-      0 0,
-      calc(100% - 15px) 0,
-      100% 15px,
-      100% 100%,
-      15px 100%,
-      0 calc(100% - 15px)
-    );
-    box-shadow: 
-      0 0 20px rgba(6, 182, 212, 0.5),
-      inset 0 0 20px rgba(6, 182, 212, 0.2);
-  }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #06b6d4, #ec4899);
+  border-radius: 4px;
+}
 
-  .cyber-button:hover {
-    @apply shadow-2xl;
-    box-shadow: 
-      0 0 30px rgba(56, 189, 248, 0.8),
-      0 0 60px rgba(56, 189, 248, 0.4),
-      inset 0 0 30px rgba(56, 189, 248, 0.3);
-    transform: translateY(-2px);
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0891b2, #db2777);
+}
 
-  .cyber-button:active {
-    transform: translateY(0);
-  }
+/* Selection */
+::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: #fff;
+}
 
-  /* Cyberpunk Card */
-  .cyber-card {
-    @apply relative bg-gradient-to-br from-slate-900/90 to-slate-800/90;
-    @apply border-2 border-cyan-500/30;
-    @apply backdrop-blur-sm;
-    @apply shadow-2xl;
-    box-shadow: 
-      0 0 30px rgba(6, 182, 212, 0.2),
-      inset 0 0 60px rgba(6, 182, 212, 0.05);
-    clip-path: polygon(
-      0 0,
-      calc(100% - 20px) 0,
-      100% 20px,
-      100% 100%,
-      20px 100%,
-      0 calc(100% - 20px)
-    );
+/* Custom animations */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
   }
-
-  .cyber-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      transparent,
-      var(--cyber-blue-bright),
-      transparent
-    );
-    animation: scan 3s infinite;
-  }
-
-  @keyframes scan {
-    0%, 100% { transform: translateX(-100%); }
-    50% { transform: translateX(100%); }
-  }
-
-  /* Glitch Effect */
-  .glitch {
-    position: relative;
-    animation: glitch-skew 5s infinite linear alternate-reverse;
-  }
-
-  .glitch::before,
-  .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 var(--cyber-blue-neon);
-    clip: rect(24px, 550px, 90px, 0);
-    animation: glitch-anim 3s infinite linear alternate-reverse;
-  }
-
-  .glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 var(--cyber-accent);
-    clip: rect(85px, 550px, 140px, 0);
-    animation: glitch-anim 2s infinite linear alternate-reverse;
-  }
-
-  @keyframes glitch-anim {
-    0% { clip: rect(61px, 9999px, 71px, 0); }
-    20% { clip: rect(84px, 9999px, 28px, 0); }
-    40% { clip: rect(47px, 9999px, 94px, 0); }
-    60% { clip: rect(10px, 9999px, 67px, 0); }
-    80% { clip: rect(55px, 9999px, 49px, 0); }
-    100% { clip: rect(90px, 9999px, 20px, 0); }
-  }
-
-  @keyframes glitch-skew {
-    0% { transform: skew(0deg); }
-    10% { transform: skew(-1deg); }
-    20% { transform: skew(1deg); }
-    30% { transform: skew(-0.5deg); }
-    40% { transform: skew(0.5deg); }
-    50% { transform: skew(0deg); }
-  }
-
-  /* Neon Border Pulse */
-  .neon-border {
-    @apply border-2 border-cyan-400/50;
-    box-shadow: 
-      0 0 10px rgba(6, 182, 212, 0.5),
-      inset 0 0 10px rgba(6, 182, 212, 0.2);
-    animation: border-pulse 2s infinite alternate;
-  }
-
-  @keyframes border-pulse {
-    0% {
-      border-color: rgba(6, 182, 212, 0.3);
-      box-shadow: 
-        0 0 10px rgba(6, 182, 212, 0.3),
-        inset 0 0 10px rgba(6, 182, 212, 0.1);
-    }
-    100% {
-      border-color: rgba(56, 189, 248, 0.8);
-      box-shadow: 
-        0 0 20px rgba(56, 189, 248, 0.6),
-        inset 0 0 20px rgba(56, 189, 248, 0.3);
-    }
-  }
-
-  /* Cyber Loading Animation */
-  .cyber-loading {
-    @apply inline-block w-12 h-12 border-4 border-cyan-500/30;
-    @apply border-t-cyan-400;
-    @apply rounded-full;
-    animation: cyber-spin 1s linear infinite;
-  }
-
-  @keyframes cyber-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  /* Holographic Effect */
-  .holographic {
-    background: linear-gradient(
-      45deg,
-      rgba(6, 182, 212, 0.3),
-      rgba(56, 189, 248, 0.3),
-      rgba(14, 165, 233, 0.3),
-      rgba(8, 145, 178, 0.3)
-    );
-    background-size: 300% 300%;
-    animation: hologram 5s ease infinite;
-  }
-
-  @keyframes hologram {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  100% {
+    transform: translateY(100%);
   }
 }
 
 @layer utilities {
-  .text-shadow-cyan {
-    text-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+  .text-balance {
+    text-wrap: balance;
   }
+  
+  .animate-scan {
+    animation: scan 4s linear infinite;
+  }
+}
 
-  .text-shadow-blue {
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
-  }
+/* Override OnchainKit styles for dark theme */
+.ock-connect-button {
+  background: transparent !important;
+  border: 1px solid rgb(6 182 212 / 0.5) !important;
+  color: rgb(6 182 212) !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.ock-connect-button:hover {
+  background: rgb(6 182 212 / 0.1) !important;
+  border-color: rgb(6 182 212) !important;
+}
+
+.ock-wallet-dropdown {
+  background: #000 !important;
+  border: 1px solid rgb(6 182 212 / 0.3) !important;
+}
+
+.ock-wallet-dropdown button {
+  color: rgb(6 182 212) !important;
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+.ock-wallet-dropdown button:hover {
+  background: rgb(6 182 212 / 0.1) !important;
 }
